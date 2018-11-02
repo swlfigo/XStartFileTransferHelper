@@ -342,6 +342,12 @@ class ViewController: NSViewController,NSAlertDelegate {
                     print(value)
                 do{
                     
+                    if !fileManager.fileExists(atPath: value as! String){
+                        //Not Exist Floder
+                        try fileManager.createDirectory(atPath: value as! String, withIntermediateDirectories: false, attributes: nil)
+                        
+                    }
+                    
                     let Des = (value as! NSString).appendingPathComponent(fileName as String);
                     
                     if fileManager.fileExists(atPath: Des) {
